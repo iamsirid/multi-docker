@@ -11,3 +11,10 @@ after_success:
   - docker build -t iamsirid/multi-nginx -f ./nginx
   - docker build -t iamsirid/multi-server -f ./server
   - docker build -t iamsirid/multi-worker -f ./worker
+
+  - echo "$DOCKEK_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push iamsirid/multi-client
+  - docker push iamsirid/multi-nginx
+  - docker push iamsirid/multi-server
+  - docker push iamsirid/multi-worker
