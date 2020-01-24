@@ -5,7 +5,7 @@ services:
 before_install:
   - docker build -t iamsirid/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true iamsirid/react-test test
+  - docker run -e CI=true iamsirid/react-test npm test
 after_success:
   - docker build -t iamsirid/multi-client -f ./client
   - docker build -t iamsirid/multi-nginx -f ./nginx
