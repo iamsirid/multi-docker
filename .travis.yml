@@ -12,7 +12,7 @@ after_success:
   - docker build -t iamsirid/multi-server ./server
   - docker build -t iamsirid/multi-worker ./worker
 
-  - echo "$DOCKEK_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push iamsirid/multi-client
   - docker push iamsirid/multi-nginx
