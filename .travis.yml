@@ -1,0 +1,13 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t iamsirid/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true iamsirid/react-testnpm test
+after_success:
+  - docker build -t iamsirid/multi-client -f ./client
+  - docker build -t iamsirid/multi-nginx -f ./nginx
+  - docker build -t iamsirid/multi-server -f ./server
+  - docker build -t iamsirid/multi-worker -f ./worker
