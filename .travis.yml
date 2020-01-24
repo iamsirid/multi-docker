@@ -7,10 +7,10 @@ before_install:
 script:
   - docker run -e CI=true iamsirid/react-test npm test
 after_success:
-  - docker build -t iamsirid/multi-client -f ./client
-  - docker build -t iamsirid/multi-nginx -f ./nginx
-  - docker build -t iamsirid/multi-server -f ./server
-  - docker build -t iamsirid/multi-worker -f ./worker
+  - docker build -t iamsirid/multi-client ./client
+  - docker build -t iamsirid/multi-nginx ./nginx
+  - docker build -t iamsirid/multi-server ./server
+  - docker build -t iamsirid/multi-worker ./worker
 
   - echo "$DOCKEK_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
